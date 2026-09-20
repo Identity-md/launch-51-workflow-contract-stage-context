@@ -1,0 +1,22 @@
+{
+  "kind": "evm_project",
+  "token": {
+    "contract": "HighRollToken",
+    "name": "High Roll",
+    "symbol": "ROLL",
+    "decimals": 18
+  },
+  "contracts": [
+    {
+      "contract": "HighRoll",
+      "constructorArgs": ["$token"]
+    }
+  ],
+  "pool": {
+    "pairedCurrency": "0x0000000000000000000000000000000000000000",
+    "fee": 3000,
+    "tickSpacing": 60,
+    "initialPrice": "79228162514264337593543950336"
+  },
+  "notes": "Deploy HighRollToken with no constructor arguments, then HighRoll with the token address. HighRoll has no owner, admin, fee or upgradeability and requires no initialization calls. Players escrow equal ROLL stakes and commit keccak256(abi.encode(roll, salt)); rolls are chosen by players, not generated randomly. The 24-hour reveal window starts when the second player joins. Two valid reveals settle immediately: the higher roll wins the pot and a tie refunds both. At or after the deadline, one reveal permits forfeit settlement; with no reveals, either player can cancel for refunds. An unmatched game can be cancelled by its opener. Players must retain their secret roll and salt and reveal before the deadline. The pool pairs with native ETH, has no hook, and uses decimal sqrtPriceX96; its initial price is a pool parameter, not a promised market valuation. Policy and signed artifact linkage are supplied by services. Independent review, source publication, attestation, admission and deployment are separate service stages."
+}
